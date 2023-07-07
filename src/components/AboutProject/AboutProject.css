@@ -1,0 +1,160 @@
+.about-project {
+  max-width: 1280px;
+  padding: 110px 70px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.about-project__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #dadada;
+}
+
+.about-project__info {
+  padding-top: 70px;
+  display: flex;
+  gap: 40px;
+}
+
+.about-project__block {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 100%;
+}
+
+.about-project__topic {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+}
+
+.about-project__descr {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.about-project__status {
+  margin-top: 110px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  row-gap: 14px;
+}
+
+.about-project__schedule {
+  margin: 0;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  background: #3ddc84;
+  padding: 9px 14px;
+}
+
+.about-project__schedule_backend {
+  color: white;
+  background: #303030;
+}
+
+.about-project__span {
+  color: #8B8B8B;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__info {
+    gap: 30px;
+  }
+
+  .about-project__block {
+    gap: 22px;
+  }
+
+  .about-project__descr {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__status {
+    grid-template-columns: 1.06fr 4fr;
+    margin-top: 93px;
+  }
+
+  .about-project__schedule {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .about-project__span {
+    font-family: 'Suisse Intl';
+    font-weight: 400;
+    color: #A0A0A0;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    padding-bottom: 28px;
+  }
+
+  .about-project__info {
+    padding-top: 60px;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .about-project__block {
+    gap: 16px;
+  }
+
+  .about-project__topic {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  
+  .about-project__descr {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__status {
+    grid-template-columns: 2.17fr 4fr;
+    margin-top: 60px;
+    row-gap: 8px;
+  }
+
+  .about-project__schedule {
+    font-size: 11px;
+    padding: 11px 10px;
+  }
+
+  .about-project__span {
+    font-size: 11px;
+    font-family: 'Suisse Intl';
+    color: #A0A0A0;
+  }
+}
