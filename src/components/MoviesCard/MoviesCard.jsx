@@ -1,6 +1,6 @@
 import React from 'react';
-import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
+import './MoviesCard.css';
 import PosterOne from '../../images/movie-poster1.png';
 import PosterTwo from '../../images/movie-poster2.png';
 import PosterThree from '../../images/movie-poster3.png';
