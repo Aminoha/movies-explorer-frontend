@@ -1,9 +1,9 @@
-.main {
+.landing {
   padding-top: 20px;
 }
 
 @media screen and (max-width: 555px) {
-  .main {
+  .landing {
     padding-top: 14px;
   }
 }

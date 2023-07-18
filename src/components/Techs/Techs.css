@@ -1,7 +1,6 @@
 .techs {
   padding: 100px 70px;
   background: #272727;
-  max-width: 1280px;
   box-sizing: border-box;
   margin: 0 auto;
 }
@@ -120,7 +119,6 @@
     margin-top: 50px;
     max-width: 178px;
     justify-content: flex-start;
-
   }
 
   .techs__list-item {

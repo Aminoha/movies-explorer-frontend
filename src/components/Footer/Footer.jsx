@@ -3,12 +3,12 @@ import './Footer.css';
 
 const Footer = (props) => {
   return (
-    <section className='footer'>
+    <footer className='footer'>
       <p className='footer__author'>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className='footer__container'>
-        <p className='footer__copy'>&copy; {(new Date().getFullYear())}</p>
+        <p className='footer__copy'>&copy; {new Date().getFullYear()}</p>
         <ul className='footer__socials'>
           <li className='footer-social'>
             <a
@@ -32,7 +32,7 @@ const Footer = (props) => {
           </li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };
 

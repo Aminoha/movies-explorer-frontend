@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-const Movies = (props) => {
+const Movies = ({ onSearch }) => {
   return (
-    <div>
-      Фильмы
-    </div>
+    <main className='films'>
+      <SearchForm onSearch={onSearch} />
+      <MoviesCardList />
+    </main>
   );
 };
 

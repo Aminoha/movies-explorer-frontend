@@ -1,50 +1,69 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import usePopupClose from '../../hooks/usePopupClose';
 import './Navigation.css';
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ isLoggedIn, isOpen, togglePopup }) => {
+  usePopupClose(isOpen, togglePopup);
+
   return (
-    <nav className='nav-auth'>
-      <ul className='nav-auth__list'>
-        {!isLoggedIn ? (
-          <>
-            <li className='nav-auth__item'>
-              <Link className='link nav-auth__link' to='/signup'>
-                Регистрация
-              </Link>
-            </li>
-            <li className='nav-auth__item'>
-              <Link
-                className='link nav-auth__link nav-auth__link_active'
-                to='/signin'
-              >
-                Войти
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className='nav-auth__item'>
-              <NavLink className='link nav-auth__link' to='/movies'>
-                Фильмы
-              </NavLink>
-            </li>
-            <li className='nav-auth__item'>
-              <NavLink className='link nav-auth__link' to='/saved-movies'>
-                Сохранённые фильмы
-              </NavLink>
-            </li>
-            <li className='nav-auth__item'>
-              <Link className='link nav-auth__link' to='/profile'>
-                <i className='nav-auth__account-icon'>dfgd</i>
-                <p className='nav-auth__account'>Аккаунт</p>
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+    <>
+      {!isLoggedIn ? (
+        <nav className='nav-auth'>
+          <Link className='link nav-auth__link' to='/signup'>
+            Регистрация
+          </Link>
+          <Link
+            className='link nav-auth__link nav-auth__link_active'
+            to='/signin'
+          >
+            Войти
+          </Link>
+        </nav>
+      ) : (
+        <>
+          <nav className='nav-movies'>
+            <NavLink className='link nav-movies__link' to='/movies'>
+              Фильмы
+            </NavLink>
+            <NavLink className='link nav-movies__link' to='/saved-movies'>
+              Сохранённые фильмы
+            </NavLink>
+          </nav>
+          <nav className='nav-profile'>
+            <Link className='link nav-profile-link' to='/profile'>
+              Аккаунт
+            </Link>
+          </nav>
+          <button
+            className='button nav-burger-button'
+            onClick={togglePopup}
+            type='button'
+          ></button>
+        </>
+      )}
+      <nav className={`popup ${isOpen ? 'popup_opened' : ''} `}>
+        <div className='popup__container'>
+          <button
+            className='button popup__button-close'
+            type='button'
+            onClick={togglePopup}
+          ></button>
+          <NavLink className='link popup__link' to='/'>
+            Главная
+          </NavLink>
+          <NavLink className='link popup__link' to='/movies'>
+            Фильмы
+          </NavLink>
+          <NavLink className='link popup__link' to='/saved-movies'>
+            Сохранённые фильмы
+          </NavLink>
+          <Link className='link nav-profile-link' to='/profile'>
+            Аккаунт
+          </Link>
+        </div>
+      </nav>
+    </>
   );
 };
 

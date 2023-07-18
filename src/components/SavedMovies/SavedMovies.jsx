@@ -1,8 +1,16 @@
-import React from "react";
+import React from 'react';
 
-const SavedMovies = (props) => {
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+
+import './SavedMovies.css';
+
+const SavedMovies = ({ onSearch }) => {
   return (
-    <div>Сохраненные фильмы</div>
+    <main className='main'>
+      <SearchForm onSearch={onSearch} />
+      <MoviesCardList />
+    </main>
   );
 };
 

@@ -1,5 +1,4 @@
 .portfolio {
-  max-width: 1280px;
   padding: 0 70px 125px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -36,7 +35,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
 .portfolio__link-title {
