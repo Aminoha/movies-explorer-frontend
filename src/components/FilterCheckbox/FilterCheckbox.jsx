@@ -1,10 +1,11 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-const FilterCheckbox = (props) => {
+const FilterCheckbox = ({onCheckbox, shortMovieCheckbox}) => {
+
   return (
     <label className='checkbox-label'>
-      <input className='checkbox' type='checkbox' name="short-films" />
+      <input className='checkbox' type='checkbox' name="short-films" onChange={onCheckbox} checked={shortMovieCheckbox}/>
       <span className='cehckbox-span'>Короткометражки</span>
     </label>
   );

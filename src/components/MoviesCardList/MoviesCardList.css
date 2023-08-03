@@ -5,6 +5,12 @@
   min-height: 50vh;
 }
 
+.movies__error {
+  color: #ee3465;
+  display: block;
+  text-align: center;
+}
+
 .movies__list {
   margin: 0;
   padding: 0 0 10px;

@@ -8,23 +8,23 @@ const AuthForm = ({
   linkQuestion,
   linkText,
   link,
-  onAurhorization,
+  disabledButton,
+  requestError,
+  handleSubmit,
   children,
 }) => {
   return (
     <main className='authorization'>
       <div className='authorization__container'>
-        <form className='authorization__form'>
+        <form className='authorization__form' onSubmit={handleSubmit}>
           <Link className='link authorization__logo' to='/' />
           <h1 className='authorization__title'>{title}</h1>
           <fieldset className='authorization__fieldset'>{children}</fieldset>
-          <span className='authorization__span-error'>
-            Что-то пошло не так...
-          </span>
           <div className='authorization__buttons'>
+          <span className='authorization__span-error'>{requestError}</span>
             <button
               className='button authorization__button'
-              onClick={onAurhorization}
+              disabled={disabledButton}
             >
               {buttonText}
             </button>
