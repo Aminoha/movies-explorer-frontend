@@ -12,7 +12,6 @@ const Movies = ({
   searchForm,
   preloader,
   errorText,
-  setErrorText,
   onLike,
   onDelete,
   onCheckbox,
@@ -26,15 +25,12 @@ const Movies = ({
         setSortedMovies={setSortedMovies}
         setSearchForm={setSearchForm}
         searchForm={searchForm}
-        setErrorText={setErrorText}
         onCheckbox={onCheckbox}
         shortMovieCheckbox={shortMovieCheckbox}
       />
 
       {preloader ? (
-        <>
           <Preloader />
-        </>
       ) : (
         <MoviesCardList
           movies={movies}

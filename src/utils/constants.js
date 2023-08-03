@@ -25,3 +25,8 @@ export const ERRORS = {
 };
 
 export const shortDuration = 40;
+
+
+export const WIDTH_SIZE = {BIG: 1027, MEDIUM: 649}
+export const COUNT_CARD = {MAX: 12, MEDIUM: 8, SMALL: 5}
+export const ADD_CARD = {MAX: 3, MIN: 2}

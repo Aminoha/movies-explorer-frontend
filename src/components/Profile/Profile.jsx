@@ -10,6 +10,7 @@ const Profile = ({ onSignOut, setCurrentUser }) => {
 
   const [isEditMode, setIsEditMode] = useState(true);
   const [requestError, setRequestError] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
   const name = useInput(currentUser.name, {
     isEmpty: false,
@@ -21,6 +22,7 @@ const Profile = ({ onSignOut, setCurrentUser }) => {
 
   const handleSumbit = (evt) => {
     evt.preventDefault();
+    setIsSending(true);
     setRequestError('');
     updateUser(email.value, name.value)
       .then((res) => {
@@ -38,7 +40,8 @@ const Profile = ({ onSignOut, setCurrentUser }) => {
         } else {
           setRequestError(RES_ERRORS.UPDATE_DEFAULT_400);
         }
-      });
+      })
+      .finally(() => setIsSending(false));
   };
 
   const handleEdit = () => {
@@ -98,7 +101,8 @@ const Profile = ({ onSignOut, setCurrentUser }) => {
                 !email.inputValid ||
                 !name.inputValid ||
                 (name.value === currentUser.name &&
-                  email.value === currentUser.email)
+                  email.value === currentUser.email) ||
+                isSending
               }
             >
               Сохранить

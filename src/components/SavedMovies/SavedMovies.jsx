@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
@@ -16,7 +16,15 @@ const SavedMovies = ({
   onCheckbox,
   shortMovieCheckbox,
   checkLike,
+  resetSearchSavedMovies,
 }) => {
+  useEffect(() => {
+    return () => {
+      resetSearchSavedMovies();
+      if (!shortMovieCheckbox) searchMovies();
+    };
+  }, []);
+
   return (
     <main className='main'>
       <SearchForm
@@ -28,9 +36,7 @@ const SavedMovies = ({
         shortMovieCheckbox={shortMovieCheckbox}
       />
       {preloader ? (
-        <>
           <Preloader />
-        </>
       ) : (
         <MoviesCardList
           movies={movies}

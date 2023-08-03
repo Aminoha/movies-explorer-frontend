@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
+
 import './MoviesCardList.css';
+import { ADD_CARD, COUNT_CARD, WIDTH_SIZE } from '../../utils/constants';
 
 const MoviesCardList = ({ movies, errorText, onLike, onDelete, checkLike }) => {
   const [countCards, setCountCards] = useState(12);
@@ -10,11 +12,11 @@ const MoviesCardList = ({ movies, errorText, onLike, onDelete, checkLike }) => {
     const handleResizeWindow = () =>
       setTimeout(() => setWidth(window.innerWidth), 1500);
     window.addEventListener('resize', handleResizeWindow);
-    if (width > 1027) {
-      setCountCards(12);
-    } else if (width > 649) {
-      setCountCards(8);
-    } else setCountCards(5);
+    if (width > WIDTH_SIZE.BIG) {
+      setCountCards(COUNT_CARD.MAX);
+    } else if (width > WIDTH_SIZE.MEDIUM) {
+      setCountCards(COUNT_CARD.MEDIUM);
+    } else setCountCards(COUNT_CARD.SMALL);
 
     return () => {
       window.removeEventListener('resize', handleResizeWindow);
@@ -22,10 +24,10 @@ const MoviesCardList = ({ movies, errorText, onLike, onDelete, checkLike }) => {
   }, [width]);
 
   const showMore = () => {
-    if (width > 1027) {
-      setCountCards(countCards + 3);
+    if (width > WIDTH_SIZE.BIG) {
+      setCountCards(countCards + ADD_CARD.MAX);
     } else {
-      setCountCards(countCards + 2);
+      setCountCards(countCards + ADD_CARD.MIN);
     }
   };
 

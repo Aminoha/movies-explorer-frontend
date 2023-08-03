@@ -15,10 +15,9 @@ const Login = ({ onLogin, isLoggedIn }) => {
   const email = useInput('', { isEmpty: true, isEmail: false });
   const password = useInput('', { isEmpty: true, minLength: 6 });
 
-  const handleLogin = (evt) => {
-    evt.preventDefault();
+  const handleLogin = () => {
     setRequestError('');
-    authorize(email.value, password.value)
+    return authorize(email.value, password.value)
       .then((res) => {
         navigate('/movies', { replace: true });
         onLogin(res);

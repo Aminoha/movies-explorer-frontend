@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AuthForm.css';
 
@@ -13,18 +13,26 @@ const AuthForm = ({
   handleSubmit,
   children,
 }) => {
+  const [isSending, setIsSending] = useState(false);
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    setIsSending(true);
+    handleSubmit().finally(() => setIsSending(false));
+  };
+
   return (
     <main className='authorization'>
       <div className='authorization__container'>
-        <form className='authorization__form' onSubmit={handleSubmit}>
+        <form className='authorization__form' onSubmit={onSubmit}>
           <Link className='link authorization__logo' to='/' />
           <h1 className='authorization__title'>{title}</h1>
           <fieldset className='authorization__fieldset'>{children}</fieldset>
           <div className='authorization__buttons'>
-          <span className='authorization__span-error'>{requestError}</span>
+            <span className='authorization__span-error'>{requestError}</span>
             <button
               className='button authorization__button'
-              disabled={disabledButton}
+              disabled={isSending || disabledButton}
             >
               {buttonText}
             </button>

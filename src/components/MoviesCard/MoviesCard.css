@@ -113,4 +113,8 @@
     font-size: 10px;
     margin-bottom: 14px;
   }
+
+  .movies__item .movies__delete {
+    opacity: 1;
+  }
 }

@@ -51,6 +51,8 @@ function App() {
 
   const [errorText, setErrorText] = useState('');
 
+  const [isFirstSearch, setIsFirstSearch] = useState(true);
+
   const [preloader, setPreloader] = useState(false);
 
   const onLogin = ({ token }) => {
@@ -141,8 +143,9 @@ function App() {
   };
 
   const searchMovies = () => {
+    setIsFirstSearch(false);
     if (!searchForm) {
-      setErrorText(ERRORS.NEED_LETTERS);
+      setErrorText(ERRORS.NEED_LETTERS)
       setSortedMovies([]);
       return;
     }
@@ -155,6 +158,11 @@ function App() {
     }
   };
 
+  const resetSearchSavedMovies = () => {
+    setSearchSavedForm('')
+    setShortSavedMovieCheckbox(false)
+  }
+
   const saveMovies = (movies) => {
     const newSortedMovies = sortMovies(movies, searchForm, shortMovieCheckbox);
     localStorage.setItem('movies', JSON.stringify(newSortedMovies));
@@ -164,6 +172,8 @@ function App() {
   };
 
   useEffect(() => {
+    if (movies.length === 0) return;
+    if (!searchForm) return setErrorText(ERRORS.NEED_LETTERS);
     if (sortedMovies.length === 0) {
       setErrorText(ERRORS.NOT_FOUND);
     } else {
@@ -192,6 +202,8 @@ function App() {
           movie.nameEN.toLowerCase().includes(searchForm.toLowerCase())
     );
   };
+
+
 
   const onLike = (movie) => {
     addMovie(movie)
@@ -227,7 +239,10 @@ function App() {
     navigate(-1);
   };
 
-  useEffect(searchMovies, [shortMovieCheckbox, savedMovies]);
+  useEffect(() => {
+    if (isFirstSearch) return;
+    searchMovies();
+  }, [shortMovieCheckbox, savedMovies]);
 
   if (isLoading) return <Preloader />;
 
@@ -259,7 +274,6 @@ function App() {
                 searchForm={searchForm}
                 preloader={preloader}
                 errorText={errorText}
-                setErrorText={setErrorText}
                 onLike={onLike}
                 onDelete={onDelete}
                 onCheckbox={() => setShortMovieCheckbox(!shortMovieCheckbox)}
@@ -287,6 +301,7 @@ function App() {
                 }
                 shortMovieCheckbox={shortSavedMovieCheckbox}
                 checkLike={checkLike}
+                resetSearchSavedMovies = {resetSearchSavedMovies}
               />
             }
           />

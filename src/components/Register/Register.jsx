@@ -21,10 +21,9 @@ const Register = ({ onLogin, isLoggedIn }) => {
   const email = useInput('', { isEmpty: true, isEmail: false });
   const password = useInput('', { isEmpty: true, minLength: 6 });
 
-  const handleRegister = (evt) => {
-    evt.preventDefault();
+  const handleRegister = () => {
     setRequestError('');
-    register(name.value, email.value, password.value)
+    return register(name.value, email.value, password.value)
       .then(() => {
         authorize(email.value, password.value).then((res) => {
           navigate('/movies', { replace: true });
