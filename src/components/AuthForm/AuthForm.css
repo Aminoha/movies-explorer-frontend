@@ -44,6 +44,7 @@
   display: block;
   color: #8b8b8b;
   font-size: 10px;
+  position: relative;
 }
 
 .authorization__input {
@@ -71,12 +72,18 @@
   border-bottom: 1px solid #4285f4;
 }
 
+.authorization__input-error {
+  color: #ee3465;
+  position: absolute;
+  top: 45px;
+  left: 0;
+}
+
 .authorization__span-error {
   color: #ee3465;
   font-size: 10px;
   font-weight: 400;
   line-height: normal;
-  margin-top: 6px;
 }
 
 .authorization__buttons {
@@ -97,6 +104,12 @@
   font-weight: 500;
   line-height: normal;
   padding: 0;
+}
+
+.authorization__button:disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+  pointer-events: none;
 }
 
 .authorization__link-text {
